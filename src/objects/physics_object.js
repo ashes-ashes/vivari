@@ -13,6 +13,8 @@ class PhysicsObject {
         this.imgsize = options.imgsize || this.size;
         this.imgpos = options.imgpos || {x: 0, y: 0};
         this.age = 0;
+
+        this.held = false;
     }
 
     draw(ctx) {
@@ -30,9 +32,11 @@ class PhysicsObject {
     }
 
     move() {
-        this.applyGravity();
-        this.deflect();
-        this.pos = Util.addVectors(this.pos, this.vel);
+        if (!this.held) {
+            this.applyGravity();
+            this.deflect();
+            this.pos = Util.addVectors(this.pos, this.vel);
+        }
         this.age++;
     }
 
@@ -57,9 +61,33 @@ class PhysicsObject {
         this.vel = Util.addVectors(this.vel, vector)
     }
 
-    beDragged(prevPos, newPos) {
-        this.pos = newPos;
-        this.vel = {x: newPos.x-prevPos.x, y: newPos.y-prevPos.y}
+    beDragged(prevPos, posChange) {
+        this.pos = {x: prevPos.x + posChange.x, y: prevPos.y + posChange.y};
+        this.vel = posChange;
+    }
+
+    startDrag() {
+        console.log("beep");
+        this.held = true;
+    }
+
+    endDrag() {
+        this.held = false;
+    }
+
+    doesContainPoint(point) {
+        let top = this.pos.y;
+        let bottom = this.pos.y + this.size.y;
+        let left =  this.pos.x;
+        let right = this.pos.x + this.size.x;
+        if (
+            top <= point.y && bottom >= point.y &&
+            left <= point.x && right >= point.x
+        ) {
+            return true
+        } else {
+            return false
+        }
     }
 
 }

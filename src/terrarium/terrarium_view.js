@@ -14,16 +14,20 @@ class TerrariumView {
 
     start() {
         setInterval(() => {
+            this.ctx.clearRect(0, 0, properties.terrarium.width, properties.terrarium.height);
             this.terrarium.move();
             this.terrarium.draw(this.ctx);
         }, 20);
+        this.setupMouse();
     }
 
     setupMouse() {
         this.canvas.addEventListener('mousemove', (e) => {
             this.mousePos.x = e.clientX - properties.game.offset.x;
             this.mousePos.y = e.clientY - properties.game.offset.y;
-            
+            if (this.mouseDown = true) {
+                this.terrarium.handleDrag(this.mousePos);
+            }
         })
         this.canvas.addEventListener('mousedown', (e) => {
             this.terrarium.handleMouseDown(this.mousePos);
