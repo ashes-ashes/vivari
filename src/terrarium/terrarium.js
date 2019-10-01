@@ -4,7 +4,6 @@ import Util from '../utils';
 class Terrarium {
     constructor() {
         this.physicsObjects = [];
-        this.dragPos = {x: null, y: null};
         this.heldObj = null;
 
         this.addPhysicsObject = this.addPhysicsObject.bind(this);
@@ -27,14 +26,13 @@ class Terrarium {
     }
 
     handleMouseDown(mousePos) {
-        let that = this;
-        this.dragPos = mousePos;
+
         let target = this.physicsObjects.find((obj) => 
             obj.doesContainPoint(mousePos)
         )
         if (target) {
             target.startDrag();
-            that.heldObj = target;
+            this.heldObj = target;
         }
     }
 
@@ -46,11 +44,10 @@ class Terrarium {
     }
 
     handleDrag(mousePos) {
-        let posChange = Util.findVector(this.dragPos, mousePos);
-        this.dragPos = mousePos;
+
         if (this.heldObj) {
             let prevPos = this.heldObj.pos;
-            this.heldObj.beDragged(prevPos, posChange);
+            this.heldObj.beDragged(prevPos, mousePos);
         }
     }
 

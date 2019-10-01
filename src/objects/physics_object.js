@@ -61,13 +61,12 @@ class PhysicsObject {
         this.vel = Util.addVectors(this.vel, vector)
     }
 
-    beDragged(prevPos, posChange) {
-        this.pos = {x: prevPos.x + posChange.x, y: prevPos.y + posChange.y};
-        this.vel = posChange;
+    beDragged(prevPos, mousePos) {
+        this.pos = {x: mousePos.x - (this.size.x/2), y: mousePos.y - (this.size.y/2)};
+        // this.vel = { x: mousePos.x-this.pos.x, y: mousePos.y-this.pos.y}
     }
 
     startDrag() {
-        console.log("beep");
         this.held = true;
     }
 
@@ -95,6 +94,6 @@ class PhysicsObject {
 
 let coinImage = new Image();
 coinImage.src = "http://i.imgur.com/2e9Fvrk.gif"
-window.coin = new PhysicsObject({sprite: coinImage, pos:{x: 200, y: 200}, size:{x: 152, y: 150}});
+window.coin = new PhysicsObject({sprite: coinImage, pos:{x: 200.0, y: 200.0}, size:{x: 152, y: 150}});
 
 export default PhysicsObject;

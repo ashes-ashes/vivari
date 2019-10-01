@@ -1,5 +1,6 @@
 import Terrarium from './terrarium';
 import properties from '../properties';
+import Util from '../utils';
 
 class TerrariumView {
     constructor(ctx, canvas) {
@@ -30,6 +31,8 @@ class TerrariumView {
             }
         })
         this.canvas.addEventListener('mousedown', (e) => {
+            this.mousePos.x = e.clientX - properties.game.offset.x;
+            this.mousePos.y = e.clientY - properties.game.offset.y;
             this.terrarium.handleMouseDown(this.mousePos);
             this.mouseDown = true;
         })
