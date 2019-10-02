@@ -33,18 +33,27 @@ class PhysicsObject {
 
     move() {
         if (!this.held) {
+            this.pos = Util.addVectors(this.pos, this.vel);
             this.applyGravity();
             this.deflect();
-            this.pos = Util.addVectors(this.pos, this.vel);
+            this.settle();
         }
+
         this.age++;
     }
 
     applyGravity() {
         if ((this.pos.y + this.size.y) < properties.terrarium.groundHeight) {
             this.vel = Util.addVectors(this.vel, properties.physics.gravity)
-        } else if ((this.pos.y + this.size.y) > properties.terrarium.groundHeight) {
+        } else if ((this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
             this.pos.y = (properties.terrarium.groundHeight - this.size.y);
+            this.vel.y = -(this.vel.y - properties.physics.impact);
+        }
+
+    }
+
+    settle() {
+        if (this.vel.y < 0.10 && this.vel.y > 0) {
             this.vel.y = 0;
         }
     }
@@ -52,9 +61,10 @@ class PhysicsObject {
     deflect() {
         if (this.pos.x <= 0 || (this.pos.x + this.size.x) >= properties.terrarium.width) {
             this.vel.x = -(this.vel.x/properties.physics.impact);
-        } else if (this.pos.y <= 0 || (this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
-            this.vel.y = -(this.vel.y/properties.physics.impact);
-        };
+        }
+        // } else if (this.pos.y <= 0 || (this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
+        //     this.vel.y = -(this.vel.y/properties.physics.impact);
+        // };
     }
 
     accelerate(vector) {

@@ -12,7 +12,7 @@ const properties = {
     },
     physics: {
         gravity: { x: 0, y: 4 },
-        impact: 2,
+        impact: 20,
     },
     sidebar: {
         width: 200,

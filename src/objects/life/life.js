@@ -12,4 +12,4 @@ class Life extends PhysicsObject {
 
 }
 
-export default Life;
+export default Life; 
