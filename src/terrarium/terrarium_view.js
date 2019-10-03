@@ -18,7 +18,7 @@ class TerrariumView {
             this.ctx.clearRect(0, 0, properties.terrarium.width, properties.terrarium.height);
             this.terrarium.move();
             this.terrarium.draw(this.ctx);
-        }, 20);
+        }, properties.window.tickLength);
         this.setupMouse();
     }
 
@@ -31,8 +31,8 @@ class TerrariumView {
             }
         })
         this.canvas.addEventListener('mousedown', (e) => {
-            this.mousePos.x = e.clientX - properties.game.offset.x;
-            this.mousePos.y = e.clientY - properties.game.offset.y;
+            this.mousePos.x = e.clientX - properties.window.offset.x;
+            this.mousePos.y = e.clientY - properties.window.offset.y;
             this.terrarium.handleMouseDown(this.mousePos);
             this.mouseDown = true;
         })

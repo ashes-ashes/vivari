@@ -1,9 +1,10 @@
 const properties = {
-    game: {
+    window: {
         offset: {
             x: 2,
             y: 2
-        }
+        },
+        tickLength: 20
     },
     terrarium: {
         height: 500,
