@@ -15,7 +15,7 @@ class PhysicsObject {
 
         this.age = 0;
 
-        this.weight = options.weight || properties.physics.impact;
+        this.weight = options.weight || properties.physics.impact*10;
 
         this.frame = 0;
         this.isAnimated = options.isAnimated || false;
@@ -23,8 +23,7 @@ class PhysicsObject {
         this.frameLength = options.frameLength || properties.window.frameLength;
 
         this.held = false;
-
-        console.log(this);
+        this.onGround = false;
 
         function advanceFrame() {
             if (this.isAnimated || this.frame !== 0) {
@@ -56,10 +55,10 @@ class PhysicsObject {
 
     move() {
         if (!this.held) {
+            this.applyFriction();
+            this.deflect();
             this.pos = Util.addVectors(this.pos, this.vel);
             this.applyGravity();
-            this.deflect();
-            this.settle();
         }
 
         this.age++;
@@ -67,24 +66,33 @@ class PhysicsObject {
 
     applyGravity() {
         if ((this.pos.y + this.size.y) < properties.terrarium.groundHeight) {
+            this.onGround = false;
             this.vel = Util.addVectors(this.vel, properties.physics.gravity)
         } else if ((this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
+            this.onGround = true;
             this.pos.y = (properties.terrarium.groundHeight - this.size.y);
             this.vel.y = -(this.vel.y - this.weight);
         }
 
     }
 
-    settle() {
-        if (this.vel.y < 0.10 && this.vel.y > 0) {
-            this.vel.y = 0;
+    applyFriction() {
+        if (this.onGround) {
+            if (this.vel.x < -properties.physics.groundFriction) {
+                this.vel.x += properties.physics.groundFriction;
+            } else if (this.vel.x > properties.physics.groundFriction) {
+                this.vel.x -= properties.physics.groundFriction;
+            } else {
+                this.vel.x = 0;
+            }
         }
     }
 
     deflect() {
         if (this.pos.x <= 0 || (this.pos.x + this.size.x) >= properties.terrarium.width) {
             this.vel.x = -(this.vel.x/properties.physics.impact);
-        }
+            this.pos.x <= 0 ? this.pos.x = 0 : this.pos.x = properties.terrarium.width - this.size.x
+        } 
     }
 
     accelerate(vector) {
@@ -92,12 +100,14 @@ class PhysicsObject {
     }
 
     beDragged(prevPos, mousePos) {
-        // this.vel = { x: mousePos.x-this.pos.x, y: mousePos.y-this.pos.y}
         this.pos = {x: mousePos.x - (this.size.x/2), y: mousePos.y - (this.size.y/2)};
+        this.vel = { x: this.pos.x-this.prevPos.x, y: this.pos.y-this.prevPos.y}
+        this.prevPos = this.pos;
     }
 
     startDrag() {
         this.held = true;
+        this.prevPos = this.pos;
     }
 
     endDrag() {

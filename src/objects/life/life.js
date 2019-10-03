@@ -6,6 +6,9 @@ class Life extends PhysicsObject {
         this.isMature = false;
         this.ageClips = options.ageClips || {}
         this.matureAge = options.matureAge;
+
+        this.frames = ageClips[0];
+        
     }
 
     move() {
