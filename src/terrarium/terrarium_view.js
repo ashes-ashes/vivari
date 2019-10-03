@@ -24,8 +24,8 @@ class TerrariumView {
 
     setupMouse() {
         this.canvas.addEventListener('mousemove', (e) => {
-            this.mousePos.x = e.clientX - properties.game.offset.x;
-            this.mousePos.y = e.clientY - properties.game.offset.y;
+            this.mousePos.x = e.clientX - properties.window.offset.x;
+            this.mousePos.y = e.clientY - properties.window.offset.y;
             if (this.mouseDown = true) {
                 this.terrarium.handleDrag(this.mousePos);
             }

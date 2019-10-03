@@ -4,7 +4,8 @@ const properties = {
             x: 2,
             y: 2
         },
-        tickLength: 20
+        tickLength: 20,
+        frameLength: 5
     },
     terrarium: {
         height: 500,
@@ -12,7 +13,7 @@ const properties = {
         groundHeight: 400,
     },
     physics: {
-        gravity: { x: 0, y: 4 },
+        gravity: { x: 0, y: 3 },
         impact: 20,
     },
     sidebar: {

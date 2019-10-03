@@ -7,22 +7,40 @@ class PhysicsObject {
 
         this.sprite = options.sprite;
         this.clip = options.clip || {x: 0, y: 0};
-        this.pos = options.pos || {x: properties.terrarium.width/2, y: 100};
+        this.pos = options.pos || {x: (properties.terrarium.width/2), y: 100};
         this.vel = {x: 0, y: 0};
         this.size = options.size;
-        this.imgsize = options.imgsize || this.size;
-        this.imgpos = options.imgpos || { x: properties.terrarium.width / 2, y: 100 };
+        this.imgsize = options.imgsize || options.size;
+        this.imgpos = options.imgpos || { x:0, y:0 };
 
         this.age = 0;
+
+        this.weight = options.weight || properties.physics.impact;
 
         this.frame = 0;
         this.isAnimated = options.isAnimated || false;
         this.frames = options.frames || [this.clip];
+        this.frameLength = options.frameLength || properties.window.frameLength;
 
         this.held = false;
+
+        console.log(this);
+
+        function advanceFrame() {
+            if (this.isAnimated || this.frame !== 0) {
+                this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
+            }
+        }
+
+        this.animate = Util.frameThrottle(this.frameLength, advanceFrame, this);
+    
     }
 
     draw(ctx) {
+
+        
+        this.animate();
+
         ctx.drawImage(
             this.sprite, 
             this.frames[this.frame].x, 
@@ -44,12 +62,6 @@ class PhysicsObject {
             this.settle();
         }
 
-        if (this.isAnimated) {
-            this.frame < this.frames.length ? this.frame++ : this.frame = 0;
-        } else if (this.frame !== 0) {
-            this.frame === this.frames.length ? this.frame = 0 : this.frame++;
-        }
-
         this.age++;
     }
 
@@ -58,7 +70,7 @@ class PhysicsObject {
             this.vel = Util.addVectors(this.vel, properties.physics.gravity)
         } else if ((this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
             this.pos.y = (properties.terrarium.groundHeight - this.size.y);
-            this.vel.y = -(this.vel.y - properties.physics.impact);
+            this.vel.y = -(this.vel.y - this.weight);
         }
 
     }
@@ -107,15 +119,17 @@ class PhysicsObject {
         }
     }
 
-    animateOnce(frames) {
-
-    }
-
+    // advanceFrame() {
+    //     if (this.isAnimated || this.frame !== 0) {
+    //         this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
+    //     }
+    // }
+    
 }
 
 
 let coinImage = new Image();
 coinImage.src = "https://i.imgur.com/xRsDpkv.png"
-window.coin = new PhysicsObject({sprite: coinImage, size:{x: 30, y: 30}, isAnimated: true, frames: [{x: 0, y: 0}, {x: 31, y: 0}, {x: 62, y: 0}]});
+window.coin = new PhysicsObject({sprite: coinImage, size: {x: 30, y: 30}, isAnimated: true, frames: [{x: 0, y: 0}, {x: 31, y: 0}, {x: 61, y: 0}]});
 
 export default PhysicsObject;
