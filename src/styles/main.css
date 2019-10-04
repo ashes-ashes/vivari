@@ -1,0 +1,9 @@
+html {
+    background-color: darkslategrey;
+}
+
+#vivari {
+    border: 2px solid lightgray;
+    background-image: url('../assets/terrarium.png');
+    background-size: 800px 500px;
+}
