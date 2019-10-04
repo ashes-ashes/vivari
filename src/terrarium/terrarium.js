@@ -1,4 +1,5 @@
 import PhysicsObject from '../objects/physics_object';
+import Slime from '../objects/life/critter/slime';
 import Util from '../utils';
 
 class Terrarium {

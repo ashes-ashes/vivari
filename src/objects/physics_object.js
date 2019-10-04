@@ -36,10 +36,6 @@ class PhysicsObject {
     }
 
     draw(ctx) {
-
-        
-        this.animate();
-
         ctx.drawImage(
             this.sprite, 
             this.frames[this.frame].x, 
@@ -136,10 +132,5 @@ class PhysicsObject {
     // }
     
 }
-
-
-let coinImage = new Image();
-coinImage.src = "https://i.imgur.com/xRsDpkv.png"
-window.coin = new PhysicsObject({sprite: coinImage, size: {x: 30, y: 30}, isAnimated: true, frames: [{x: 0, y: 0}, {x: 31, y: 0}, {x: 61, y: 0}]});
 
 export default PhysicsObject;

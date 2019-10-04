@@ -4,11 +4,9 @@ class Life extends PhysicsObject {
     constructor(options) {
         super(options);
         this.isMature = false;
-        this.ageClips = options.ageClips || {}
+        this.ageFrames = options.ageFrames || {}
         this.matureAge = options.matureAge;
 
-        this.frames = ageClips[0];
-        
     }
 
     move() {
@@ -17,8 +15,8 @@ class Life extends PhysicsObject {
     }
 
     grow() {
-        if (Object.keys(options.ageClips).includes(this.age)) {
-            this.clip = this.ageClips[this.age];
+        if (Object.keys(this.ageFrames).includes(this.age)) {
+            this.frames = this.ageFrames[this.age];
         }
     }
 

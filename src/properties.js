@@ -14,7 +14,7 @@ const properties = {
     },
     physics: {
         gravity: { x: 0, y: 3 },
-        impact: 2,
+        impact: 3,
         groundFriction: 2,
     },
     sidebar: {

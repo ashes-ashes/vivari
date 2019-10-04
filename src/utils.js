@@ -20,6 +20,9 @@ const Util = {
                 countdown--;
             }
         }
+    },
+    randInRange: (min, max) => {
+        return Math.random() * (max - min) + min;
     }
 };
 
