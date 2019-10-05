@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         let instructions = document.getElementsByClassName('instruction');
-        instructions.forEach((el) => {
+        Array.from(instructions).forEach((el) => {
             el.classList.remove('vis');
         }, 20000)
     })
