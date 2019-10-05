@@ -1,6 +1,7 @@
 import PhysicsObject from '../objects/physics_object';
-import Slime from '../objects/life/critter/mote';
+import Mote from '../objects/life/critter/mote';
 import Util from '../utils';
+
 
 class Terrarium {
     constructor() {
@@ -50,6 +51,10 @@ class Terrarium {
             let prevPos = this.heldObj.pos;
             this.heldObj.beDragged(prevPos, mousePos);
         }
+    }
+
+    addMote() {
+        this.addPhysicsObject(new Mote({ size: { x: 30, y: 30 }, isAnimated: false, ageFrames: { 0: [{ x: 0, y: 0 }, { x: 31, y: 0 }, { x: 61, y: 0 }] } }));
     }
 
 }

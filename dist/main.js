@@ -613,6 +613,9 @@ window.addEventListener('DOMContentLoaded', function () {
       el.classList.remove('vis');
     }, 20000);
   });
+  document.getElementById("???").addEventListener('click', function () {
+    terrarium.terrarium.addMote();
+  });
 });
 
 /***/ }),
@@ -1192,6 +1195,29 @@ function () {
         var prevPos = this.heldObj.pos;
         this.heldObj.beDragged(prevPos, mousePos);
       }
+    }
+  }, {
+    key: "addMote",
+    value: function addMote() {
+      this.addPhysicsObject(new _objects_life_critter_mote__WEBPACK_IMPORTED_MODULE_1__["default"]({
+        size: {
+          x: 30,
+          y: 30
+        },
+        isAnimated: false,
+        ageFrames: {
+          0: [{
+            x: 0,
+            y: 0
+          }, {
+            x: 31,
+            y: 0
+          }, {
+            x: 61,
+            y: 0
+          }]
+        }
+      }));
     }
   }]);
 

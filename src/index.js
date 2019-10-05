@@ -40,5 +40,9 @@ window.addEventListener('DOMContentLoaded', () => {
             el.classList.remove('vis');
         }, 20000)
     })
+
+    document.getElementById("???").addEventListener('click', () => {
+        terrarium.terrarium.addMote();
+    })
     
 })
