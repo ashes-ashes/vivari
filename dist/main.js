@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 var getUrl = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
 var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(/*! ../assets/terrarium.png */ "./src/assets/terrarium.png"));
 // Module
-exports.push([module.i, "html {\n    background-color: darkslategrey;\n}\n\n#vivari {\n    border: 2px solid lightgray;\n    background-image: url(" + ___CSS_LOADER_URL___0___ + ");\n    background-size: 800px 500px;\n}", ""]);
+exports.push([module.i, "\nhtml {\n\n}\n\nbody {\n    display: flex;\n    flex-direction: column;\n    background-color: #232829;\n    font-family: 'Open Sans', sans-serif;\n}\n\nmain {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    background-image: linear-gradient(#232829, black);\n    margin-top: 100px;\n    width: 100%;\n}\n\naside {\n    display: flex;\n    width: 100%;\n    flex-direction: column;\n    align-items: center;\n    width: 400px;\n\n}\n\n#vivari {\n    border: 2px solid lightgray;\n    background-color: darkslategrey;\n    background-image: url(" + ___CSS_LOADER_URL___0___ + ");\n    background-size: 800px 500px;\n}\n\nh1 {\n    color: palegoldenrod;\n    font-size: 50px;\n    /* margin: 10px; */\n    font-family: 'Mansalva', cursive;\n    text-shadow: 0px 0px 20px rgba(255,254,232,0.6);\n}\n\nli {\n    font-size: 20px;\n    color: dimgray;\n}\n\na {\n    font-size: 20px;\n    color: dimgray;\n\n    transition-property: text-shadow, color;\n    transition-duration: .2s;\n}\n\na:hover {\n    color: palegoldenrod;\n    text-shadow: 0px 0px 5px rgba(255,254,232, 0.6);\n}\n\na:active {\n    text-shadow: 0px 0px 10px rgba(255,254,232);\n}\n\nfooter {\n    background-color: black;\n    height: 300px;\n}\n\nfooter ul {\n    width: 1200px;\n    margin: auto;\n    margin-top: 80px;\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    \n    opacity: 0;\n    transition-property: opacity;\n    transition-duration: 2s;\n}\n\nfooter ul.vis {\n    opacity: 1\n}\n\narticle {\n    color: palegoldenrod;\n    text-shadow: 0px 0px 10px rgba(255,254,232, 0.8);\n    font-size: 20px;\n    text-align: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-evenly;\n    height: 400px;\n}\n\narticle p {\n    opacity: 0;\n    transition-property: opacity;\n    transition-duration: 2s;\n}\n\narticle p.vis {\n    opacity: 1;\n}\n", ""]);
 
 
 /***/ }),
@@ -546,6 +546,17 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./src/assets/mote.png":
+/*!*****************************!*\
+  !*** ./src/assets/mote.png ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAABRNAAAUTQGUyo0vAAACnGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8ZXhpZjpGb2NhbFBsYW5lWFJlc29sdXRpb24+MTMyPC9leGlmOkZvY2FsUGxhbmVYUmVzb2x1dGlvbj4KICAgICAgICAgPGV4aWY6Rm9jYWxQbGFuZVJlc29sdXRpb25Vbml0PjI8L2V4aWY6Rm9jYWxQbGFuZVJlc29sdXRpb25Vbml0PgogICAgICAgICA8ZXhpZjpGb2NhbFBsYW5lWVJlc29sdXRpb24+MTMyPC9leGlmOkZvY2FsUGxhbmVZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CtzpqsoAAAk4SURBVEgNXVfZjh1JEY2IXOrWXXqxfXuQh1nwMIywJV4sJCReLPEN/p7x/ATvPPsP4MWPg4SRQMICRmpmFTPdttvdd6nKyswITvbYYuB2Z9et6qo8sZw4EcVmxNQ+nzxiuvs3fnpxKofvnMj59pW8399iv9yIG3q56gfxqRP2hWWoTEs8syXS3pmVvV0UZ4v9THM36NHlRvNsoePySH96cqZPNis7/+3ant17bB9/TMaM9T3wI37y5ImcnJ/LfLeW7tZKGqAv3n23MR8Wg/PmnAtBpBRhiUyTMkUx08n2VSxIrTOutez6mnFMkuvB22NNm5XuT8717tlaH58D/Nn34O4RP5In9Bp0vZZ+Ht2WXnpWDUSz6OfadeK76FwX2GaB/cw77UK0zrFFZR/ngfxCYJh4N81IahSZyUT9lklsQQE+Hty8oHsI0vnil3Tv3jNzDx6QO1nA0wY6RbcT9fPsInaNNTCQ3SwE7T27uXc0d5F7WNFTkN7hf3NvHUIHMySoUydcRUy4mxFPuHlvTLszodR5auDnAH//d58T/+lP98PNzcq9AdWc4gz+RJPOR5s5spl4PwuRAQBjHCIh7Dw5KlSRZKuuSs5mE36SljJW4rFMPE6syac8daGbJpUyxKnuzxF2ulv94dmJdNXLbhh8vy5Bs+ui6MwLPApuHgPPGZ5qlF4iwi0UCVElM3iGzJsWU5qwZzKnQ65hHyfy1cHtTUHAHb/IiSR0tJ1e0sF6TU9Xp+ZnYG/oxOmNmQ85RO1q5x3PZ50tJNJSvV9R5KXvZU7e9cwOwPhRZi+Im2olLYk6GXjSfRxKBwN82QPaOwEvbLcX01rs9vFKR0l6vx/Zh8OV7PPea6rB+wxvpffOgStxxVEOwZoDiv6AnVuS8zNy4I2EOTHcrWVEVYxIMaJe9+bzVoWjDch1NZ6ZWc1VD6PqUKTuX3Htwko/T535Tb10iwWKcdLgo3QOxJHoF9zTAffuiDt3RCEcAHQFZw8lzk+IHAy5cUB1+8r01XMj21HOV4o0RFC7SkEmkADN1VMo3kquVBEErlO9rLMODPZ9L35P4GYMzldwE+Hs3IJnsuLeH1CIxxy7m+Lntym8dYfdBzeI3opEfSCHOrGvNqT/fEFy8W/ml6fEmZ22yGrx1ab2KV4mrzkfFp93817C5qX4cOFQe9V3UgPCDIPdjAPNEd4lcgrP4pLFjjh8+CG5X79D/LYjWmCxwXMm/ghsvz0n+jRKIFa7MCShaKcTT3lEXY62q2OVkBLSMwJvcXwD0jSbxLrgHGtgANcAkYihZ88gU1hy8GuO7wH0NwD9EJ62T6NVYxbKCSVMdH9Bfnab7PeZw/7cat06r4N1vkcKUZyI96ge9e2OgHc5TCJDjgLmOwC56l3Lc4A4dOQRBN8tJR68R+5XPyF+N9K1rqOgmqcE2SAP4Ob1DOr7EYj3ixMYfwS+Q78ISzpuQkQudF6Q/XKNJ2HFEP3K3PTXIAooE5ARAsgQZYfA4WFeHzO/20FHANAAseAjgNt6bQCOvISGfzBnWR2jzhcQHY/AQGzMe1ddxv7s/TXeMZ6EBqHTdG0PD2lHMbC1GDrsi6M5klVH3Atxu9w8bKgN9Ief63OQGyngW0e4Ffy6zgXOcdbEmlH4GQt4l63D/fDxN9+Bit2bN+ohUPV6w2vA16Cw7s29b4xAxeJra1eSW8eCS6z/vel/v72Cx1BaVBzamlMlExVBf4PrqpAGopH0aiTetV1x2rZql6H838f79TkC2ey0DQr4bIOAZVhQhLRW7F4y6OycjsBpeLr0BpmKasXrBDCHIqeshYrhwZpAWtToN+emn+2IEhArFoJ4bQAwr8HbNaTALmHV37dUNy+s6g6WZ9w2wZ/smcrUfHEFbW7So7wx2dQBJpV2W5OXUlD00N8R1xJUAMfd11T/+i3ZPxLBIjKsa/AKoIIFhaIN4vPppeU/f47nLsjQFUoeKaNxFJv2Q2kPFTSfqhH6eeDRJGReY8hFA3KTdHKzOlqSAeW5w5jTc3WvqHzxGfEfEMH0LtF7oOIB4oqOScilvcSef3xF9S/fUNl8yTZeNI8tYxUbzHhEHaVtqugefRnTVj1Bq8uQdAMhRchzlZom9NEYdMepoi4zJgzQXe1r1s8Sx/2W3c/fJ1pHsw55vUqmzxPpv55TfvGFTtvvrJQrS2VDU92Wsew5GYA5OVcnJL8e8aKOqwv1S8xGWQOCPWVIbxKB4iQLYCdqsEDRwE4QBPzPNpxeUHj+Lcn8JtmLS8PUAI8A7HZa8xUStaVcLinlVzaUjRbeCZVhRMOELCKTVGo/aD2N5iumwbSfyhw1jiQn3OgnTAAOEwHmK64GMvUgnCER4uZSL6/IbeetElhCAW/RjxPA0RZT3lLSK4Be5tEwaubdVHgEqZOgQWRMC37Xpk807IxRFFNr9SXlGVo71F0YBUQBUyRYHFQqNsDkpkObs+A6BEVQiVA99HfcUhCQBCK1SO1syFswZqsj7SCHO2dlmLJNjoaSroCTkl5eTOqv6Mf1WE55px4TFQarJjCoAwvV/ASaQBDQ4JJl2ruudBCGiHEOswXMqhCSNvqgEtBoQU2QqWLabROv6b4kN+Jiwsg2DeiOBzLVCxrr5mdr88PFqcXlSd1Dym7Arud1wBgZ0NpR+jFUDFdZJkyAGBjzyBFBCRhrRSHubSxvwx7KKzPKBpWflPJYMo0lGdpgTSmHLG6bF/Wk7Fypd9eD3n3wQP394zv69KtT2sRVpdsRjbifdlu4iikBvwgNOkjvk6YSYwi+tTcMldDg1iyaLjVZRkFjyNHEqAyeSilTCmEKSN8NKAQkojbQy6/O9PHxHXtIj8zTs3t2/y7p0zunND87sUX1kM8rwzys2KY2Nk+TDxLDmK/QBSw7miEtGXFukxzw4HjVCTSDARk5j9khAqjbo658kTd66E6uQZuT9x8+RjLfvML833tTmzyvqHM/Wvay1Y0LTWl7vCiUSUa8xswR6BGvMDP0hD3YXXNWTVHz9WtMqRMqZ+UOayNue39qnp4C9CFAm+Q3VcfC39bgP8G6+5Bpfc7PXr9Dvbi1kX5YyUmX+Qqzkk8jaLXg7b7w6gBCeUW0nO+tdJ3qubfrFzaU5xvAafulna3X+gA5JYT3DWjD/A/dXvXibPeecQAAAABJRU5ErkJggg=="
+
+/***/ }),
+
 /***/ "./src/assets/terrarium.png":
 /*!**********************************!*\
   !*** ./src/assets/terrarium.png ***!
@@ -580,9 +591,28 @@ window.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('vivari');
   var ctx = canvas.getContext("2d");
   var terrarium = new _terrarium_terrarium_view__WEBPACK_IMPORTED_MODULE_1__["default"](ctx, canvas);
-  terrarium.start(); //testing on the window//
-
-  window.terrarium = terrarium;
+  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].window.offset.x = canvas.getBoundingClientRect().x;
+  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].window.offset.y = canvas.getBoundingClientRect().y;
+  terrarium.start();
+  terrarium.terrarium.addPhysicsObject(coin);
+  setTimeout(function () {
+    var p = document.getElementById('instructions1');
+    p.classList.add('vis');
+  }, 1000);
+  setTimeout(function () {
+    var p = document.getElementById('instructions2');
+    p.classList.add('vis');
+  }, 5000);
+  setTimeout(function () {
+    var links = document.getElementById('hireme');
+    links.classList.add('vis');
+  }, 9000);
+  setTimeout(function () {
+    var instructions = document.getElementsByClassName('instruction');
+    instructions.forEach(function (el) {
+      el.classList.remove('vis');
+    }, 20000);
+  });
 });
 
 /***/ }),
@@ -627,9 +657,13 @@ function (_Life) {
   _inherits(Critter, _Life);
 
   function Critter(options) {
+    var _this;
+
     _classCallCheck(this, Critter);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Critter).call(this, options));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Critter).call(this, options));
+    _this.hunger = 0;
+    return _this;
   }
 
   _createClass(Critter, [{
@@ -647,10 +681,10 @@ function (_Life) {
 
 /***/ }),
 
-/***/ "./src/objects/life/critter/slime.js":
-/*!*******************************************!*\
-  !*** ./src/objects/life/critter/slime.js ***!
-  \*******************************************/
+/***/ "./src/objects/life/critter/mote.js":
+/*!******************************************!*\
+  !*** ./src/objects/life/critter/mote.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -659,6 +693,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _critter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./critter */ "./src/objects/life/critter/critter.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils */ "./src/utils.js");
 /* harmony import */ var _properties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../properties */ "./src/properties.js");
+/* harmony import */ var _assets_mote_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/mote.png */ "./src/assets/mote.png");
+/* harmony import */ var _assets_mote_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_mote_png__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -685,25 +721,28 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Slime =
+
+var Mote =
 /*#__PURE__*/
 function (_Critter) {
-  _inherits(Slime, _Critter);
+  _inherits(Mote, _Critter);
 
-  function Slime(options) {
+  function Mote(options) {
     var _this;
 
-    _classCallCheck(this, Slime);
+    _classCallCheck(this, Mote);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Slime).call(this, options));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Mote).call(this, options));
+    _this.sprite = new Image(30, 30);
+    _this.sprite.src = _assets_mote_png__WEBPACK_IMPORTED_MODULE_3___default.a;
     _this.hopsPower = 10;
     return _this;
   }
 
-  _createClass(Slime, [{
+  _createClass(Mote, [{
     key: "move",
     value: function move() {
-      _get(_getPrototypeOf(Slime.prototype), "move", this).call(this);
+      _get(_getPrototypeOf(Mote.prototype), "move", this).call(this);
 
       if (Math.random() < 0.01) {
         this.hop();
@@ -711,18 +750,15 @@ function (_Critter) {
     }
   }]);
 
-  return Slime;
+  return Mote;
 }(_critter__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
-var coinImage = new Image();
-coinImage.src = "https://i.imgur.com/xRsDpkv.png";
-window.coin = new Slime({
-  sprite: coinImage,
+window.coin = new Mote({
   size: {
     x: 30,
     y: 30
   },
-  isAnimated: true,
+  isAnimated: false,
   ageFrames: {
     0: [{
       x: 0,
@@ -736,7 +772,7 @@ window.coin = new Slime({
     }]
   }
 });
-/* harmony default export */ __webpack_exports__["default"] = (Slime);
+/* harmony default export */ __webpack_exports__["default"] = (Mote);
 
 /***/ }),
 
@@ -996,8 +1032,8 @@ __webpack_require__.r(__webpack_exports__);
 var properties = {
   window: {
     offset: {
-      x: 2,
-      y: 2
+      x: 0,
+      y: 0
     },
     tickLength: 20,
     frameLength: 5
@@ -1087,7 +1123,7 @@ if (content.locals) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _objects_physics_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../objects/physics_object */ "./src/objects/physics_object.js");
-/* harmony import */ var _objects_life_critter_slime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../objects/life/critter/slime */ "./src/objects/life/critter/slime.js");
+/* harmony import */ var _objects_life_critter_mote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../objects/life/critter/mote */ "./src/objects/life/critter/mote.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./src/utils.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 

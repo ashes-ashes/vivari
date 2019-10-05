@@ -5,6 +5,9 @@ import properties from '../../../properties';
 class Critter extends Life {
     constructor(options) {
         super(options);
+        
+        this.hunger = 0;
+        
     }
 
     hop() {

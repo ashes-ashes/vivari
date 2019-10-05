@@ -1,8 +1,10 @@
+
+
 const properties = {
     window: {
         offset: {
-            x: 2,
-            y: 2
+            x: 0,
+            y: 0,
         },
         tickLength: 20,
         frameLength: 5
