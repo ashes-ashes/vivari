@@ -6,7 +6,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #232829;
+    background-color: black;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -15,7 +15,7 @@ main {
     flex-direction: row;
     justify-content: center;
     background-image: linear-gradient(#232829, black);
-    margin-top: 100px;
+    padding-top: 100px;
     width: 100%;
 }
 
@@ -65,8 +65,6 @@ a:active {
 }
 
 footer {
-    background-color: black;
-    height: 300px;
 }
 
 footer ul {
@@ -105,4 +103,26 @@ article p {
 
 article p.vis {
     opacity: 1;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  main {
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-top: 50px;
+  }
+
+  article {
+    flex-direction: row;
+    height: auto;
+    margin: 20px;
+    width: 800px;
+  }
+
+
+  footer ul {
+      width: 800px;
+      margin-top: 20px;
+  }
 }

@@ -4,7 +4,13 @@ import TerrariumView from './terrarium/terrarium_view';
 import './styles/reset.css';
 import './styles/main.css';
 
-
+const fetchWindowProps = (canvas) => {
+    let props = canvas.getBoundingClientRect();
+    properties.window.offset.x = props.x;
+    properties.window.offset.y = props.y;
+    properties.terrarium.height = props.height;
+    properties.terrarium.width = props.width;
+}
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -12,8 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let ctx = canvas.getContext("2d");
     let terrarium = new TerrariumView(ctx, canvas);
 
-    properties.window.offset.x = canvas.getBoundingClientRect().x;
-    properties.window.offset.y = canvas.getBoundingClientRect().y;
+    fetchWindowProps(canvas);
 
     terrarium.start();
     terrarium.terrarium.addPhysicsObject(coin);
@@ -44,5 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById("???").addEventListener('click', () => {
         terrarium.terrarium.addMote();
     })
+
+    window.onresize = fetchWindowProps(canvas);
     
 })
