@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 var getUrl = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
 var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(/*! ../assets/terrarium.png */ "./src/assets/terrarium.png"));
 // Module
-exports.push([module.i, "\nhtml {\n\n}\n\nbody {\n    display: flex;\n    flex-direction: column;\n    background-color: #232829;\n    font-family: 'Open Sans', sans-serif;\n}\n\nmain {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    background-image: linear-gradient(#232829, black);\n    margin-top: 100px;\n    width: 100%;\n}\n\naside {\n    display: flex;\n    width: 100%;\n    flex-direction: column;\n    align-items: center;\n    width: 400px;\n\n}\n\n#vivari {\n    border: 2px solid lightgray;\n    background-color: darkslategrey;\n    background-image: url(" + ___CSS_LOADER_URL___0___ + ");\n    background-size: 800px 500px;\n}\n\nh1 {\n    color: palegoldenrod;\n    font-size: 50px;\n    /* margin: 10px; */\n    font-family: 'Mansalva', cursive;\n    text-shadow: 0px 0px 20px rgba(255,254,232,0.6);\n}\n\nli {\n    font-size: 20px;\n    color: dimgray;\n}\n\na {\n    font-size: 20px;\n    color: dimgray;\n\n    transition-property: text-shadow, color;\n    transition-duration: .2s;\n}\n\na:hover {\n    color: palegoldenrod;\n    text-shadow: 0px 0px 5px rgba(255,254,232, 0.6);\n}\n\na:active {\n    text-shadow: 0px 0px 10px rgba(255,254,232);\n}\n\nfooter {\n    background-color: black;\n    height: 300px;\n}\n\nfooter ul {\n    width: 1200px;\n    margin: auto;\n    margin-top: 80px;\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    \n    opacity: 0;\n    transition-property: opacity;\n    transition-duration: 2s;\n}\n\nfooter ul.vis {\n    opacity: 1\n}\n\narticle {\n    color: palegoldenrod;\n    text-shadow: 0px 0px 10px rgba(255,254,232, 0.8);\n    font-size: 20px;\n    text-align: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-evenly;\n    height: 400px;\n}\n\narticle p {\n    opacity: 0;\n    transition-property: opacity;\n    transition-duration: 2s;\n}\n\narticle p.vis {\n    opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\nhtml {\n\n}\n\nbody {\n    display: flex;\n    flex-direction: column;\n    background-color: black;\n    font-family: 'Open Sans', sans-serif;\n}\n\nmain {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    background-image: linear-gradient(#232829, black);\n    padding-top: 100px;\n    width: 100%;\n}\n\naside {\n    display: flex;\n    width: 100%;\n    flex-direction: column;\n    align-items: center;\n    width: 400px;\n}\n\n#vivari {\n    border: 2px solid lightgray;\n    background-color: darkslategrey;\n    background-image: url(" + ___CSS_LOADER_URL___0___ + ");\n    background-size: 800px 500px;\n}\n\nh1 {\n    color: palegoldenrod;\n    font-size: 50px;\n    /* margin: 10px; */\n    font-family: 'Mansalva', cursive;\n    text-shadow: 0px 0px 20px rgba(255,254,232,0.6);\n}\n\nli {\n    font-size: 20px;\n    color: dimgray;\n}\n\na {\n    font-size: 20px;\n    color: dimgray;\n\n    transition-property: text-shadow, color;\n    transition-duration: .2s;\n}\n\na:hover {\n    color: palegoldenrod;\n    text-shadow: 0px 0px 5px rgba(255,254,232, 0.6);\n}\n\na:active {\n    text-shadow: 0px 0px 10px rgba(255,254,232);\n}\n\nfooter {\n}\n\nfooter ul {\n    width: 1200px;\n    margin: auto;\n    margin-top: 80px;\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    \n    opacity: 0;\n    transition-property: opacity;\n    transition-duration: 2s;\n}\n\nfooter ul.vis {\n    opacity: 1\n}\n\narticle {\n    color: palegoldenrod;\n    text-shadow: 0px 0px 10px rgba(255,254,232, 0.8);\n    font-size: 20px;\n    text-align: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-evenly;\n    height: 400px;\n}\n\narticle p {\n    opacity: 0;\n    transition-property: opacity;\n    transition-duration: 2s;\n}\n\narticle p.vis {\n    opacity: 1;\n}\n\n@media only screen and (max-width: 1200px) {\n\n  main {\n      flex-direction: column-reverse;\n      align-items: center;\n      padding-top: 50px;\n  }\n\n  article {\n    flex-direction: row;\n    height: auto;\n    margin: 20px;\n    width: 800px;\n  }\n\n\n  footer ul {\n      width: 800px;\n      margin-top: 20px;\n  }\n}", ""]);
 
 
 /***/ }),
@@ -587,12 +587,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var fetchWindowProps = function fetchWindowProps(canvas) {
+  var props = canvas.getBoundingClientRect();
+  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].window.offset.x = props.x;
+  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].window.offset.y = props.y;
+  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].terrarium.height = props.height;
+  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].terrarium.width = props.width;
+};
+
 window.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('vivari');
   var ctx = canvas.getContext("2d");
   var terrarium = new _terrarium_terrarium_view__WEBPACK_IMPORTED_MODULE_1__["default"](ctx, canvas);
-  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].window.offset.x = canvas.getBoundingClientRect().x;
-  _properties__WEBPACK_IMPORTED_MODULE_0__["default"].window.offset.y = canvas.getBoundingClientRect().y;
+  fetchWindowProps(canvas);
   terrarium.start();
   terrarium.terrarium.addPhysicsObject(coin);
   setTimeout(function () {
@@ -616,6 +624,7 @@ window.addEventListener('DOMContentLoaded', function () {
   document.getElementById("???").addEventListener('click', function () {
     terrarium.terrarium.addMote();
   });
+  window.onresize = fetchWindowProps(canvas);
 });
 
 /***/ }),
