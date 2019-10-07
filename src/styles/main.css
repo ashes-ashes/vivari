@@ -124,3 +124,28 @@ article p.vis {
       margin-top: 20px;
   }
 }
+
+@media only screen and (max-width: 800px) {
+
+  article {
+    flex-direction: row;
+    height: auto;
+    margin: 20px;
+    width: 600px;
+  }
+
+
+  footer ul {
+      width: 600px;
+      margin-top: 20px;
+  }
+
+  #vivari {
+        border: 2px solid lightgray;
+        background-color: darkslategrey;
+        background-image: url('../assets/terrarium.png');
+        background-size: 600px 375px;
+        width: 600px;
+        height: 375px;
+    }
+}

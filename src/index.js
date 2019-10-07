@@ -5,11 +5,13 @@ import './styles/reset.css';
 import './styles/main.css';
 
 const fetchWindowProps = (canvas) => {
+    console.log(canvas);
     let props = canvas.getBoundingClientRect();
+    console.log(props);
     properties.window.offset.x = props.x;
     properties.window.offset.y = props.y;
-    properties.terrarium.height = props.height;
-    properties.terrarium.width = props.width;
+    properties.window.height = props.height;
+    properties.window.width = props.width;
 }
 
 
@@ -50,6 +52,8 @@ window.addEventListener('DOMContentLoaded', () => {
         terrarium.terrarium.addMote();
     })
 
-    window.onresize = fetchWindowProps(canvas);
+    window.addEventListener('resize', () => {
+        fetchWindowProps(canvas);
+    })
     
 })

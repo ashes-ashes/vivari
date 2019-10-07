@@ -6,6 +6,8 @@ const properties = {
             x: 0,
             y: 0,
         },
+        height: 500,
+        width: 800,
         tickLength: 20,
         frameLength: 5
     },

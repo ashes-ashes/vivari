@@ -22,17 +22,21 @@ class TerrariumView {
         this.setupMouse();
     }
 
+    getMousePos(e) {
+        this.mousePos.x = ((e.clientX - properties.window.offset.x) / properties.window.width) * properties.terrarium.width;
+        this.mousePos.y = ((e.clientY - properties.window.offset.y) / properties.window.height) * properties.terrarium.height;
+    }
+
     setupMouse() {
         this.canvas.addEventListener('mousemove', (e) => {
-            this.mousePos.x = e.clientX - properties.window.offset.x;
-            this.mousePos.y = e.clientY - properties.window.offset.y;
+            this.getMousePos(e);
             if (this.mouseDown = true) {
                 this.terrarium.handleDrag(this.mousePos);
             }
         })
         this.canvas.addEventListener('mousedown', (e) => {
-            this.mousePos.x = e.clientX - properties.window.offset.x;
-            this.mousePos.y = e.clientY - properties.window.offset.y;
+            this.getMousePos(e);
+            console.log(`Clicked at ${this.mousePos.x}, ${this.mousePos.y}`);
             this.terrarium.handleMouseDown(this.mousePos);
             this.mouseDown = true;
         })
