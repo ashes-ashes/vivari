@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     output: {
-        publicPath: '/vivari/',
+        // publicPath: '/vivari/',
         path: path.resolve(__dirname, 'build'),
         filename: 'main.js',
     },
