@@ -21,9 +21,51 @@
 ### Art Assets
 - Procreate
 
+## Current Features
+- *Motes.* Hopping points of light.
+- *Physics.* Objects in the terrarium can be picked up and tossed – they'll collide with the walls and floor, bounce, slide, and come to a stop from friction.
+
 
 ## Future Features
+### Gameplay Elements
 - *Growing plants.* Plants are a food source - motes will dim and flicker as they get hungrier.
 - *'Gacha' mechanics.* Deeds for seeds. Complete tasks in your real life and be rewarded in-game.
-- *Growing up.* Well cared-for motes becoming creatures.
+- *Growing up.* Well cared-for motes becoming creatures with more complex behavior.
 - *Hazards.* Your little lights are vulnerable to predation.
+- *Saving your progress.* (Once there's something to save.)
+
+### Internal Improvements.
+- *More complex physics.* Currently, physics are calculated with respect to the ground and walls –
+```javascript
+    applyGravity() {
+        if ((this.pos.y + this.size.y) < properties.terrarium.groundHeight) {
+            this.onGround = false;
+            this.vel = Util.addVectors(this.vel, properties.physics.gravity)
+        } else if ((this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
+            this.onGround = true;
+            this.pos.y = (properties.terrarium.groundHeight - this.size.y);
+            this.vel.y = -(this.vel.y - this.weight);
+        }
+
+    }
+
+    applyFriction() {
+        if (this.onGround) {
+            if (this.vel.x < -properties.physics.groundFriction) {
+                this.vel.x += properties.physics.groundFriction;
+            } else if (this.vel.x > properties.physics.groundFriction) {
+                this.vel.x -= properties.physics.groundFriction;
+            } else {
+                this.vel.x = 0;
+            }
+        }
+    }
+
+    deflect() {
+        if (this.pos.x <= 0 || (this.pos.x + this.size.x) >= properties.terrarium.width) {
+            this.vel.x = -(this.vel.x/properties.physics.impact);
+            this.pos.x <= 0 ? this.pos.x = 0 : this.pos.x = properties.terrarium.width - this.size.x
+        } 
+    }
+```
+Ideally, they would support collisions with other objects as well, for future implementation of plants, hostile creatures and possibly more complex terrain objects.
