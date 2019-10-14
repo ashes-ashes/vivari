@@ -25,17 +25,19 @@ class PhysicsObject {
         this.held = false;
         this.onGround = false;
 
-        function advanceFrame() {
-            if (this.isAnimated || this.frame !== 0) {
-                this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
-            }
+        this.advanceFrame = () => {
+            this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
         }
 
-        this.animate = Util.frameThrottle(this.frameLength, advanceFrame, this);
+        this.animate = Util.frameThrottle(this.frameLength, this.advanceFrame, this);
     
     }
 
     draw(ctx) {
+        if (this.isAnimated || this.frame !== 0) {
+            this.animate();
+        }
+        
         ctx.drawImage(
             this.sprite, 
             this.frames[this.frame].x, 

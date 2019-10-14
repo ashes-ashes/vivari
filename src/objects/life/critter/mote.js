@@ -12,6 +12,10 @@ class Mote extends Critter {
         this.sprite = new Image(30, 30);
         this.sprite.src = motepng;
 
+        this.size = {x: 30, y: 30};
+        this.isAnimated = false;
+        this.ageFrames = {0: [{x: 0, y: 0}]};
+
         this.hopsPower = 10;
     }
 
@@ -23,6 +27,6 @@ class Mote extends Critter {
     }
 }
 
-window.coin = new Mote({size: { x: 30, y: 30 }, isAnimated: false, ageFrames: {0: [{ x: 0, y: 0 }, { x: 31, y: 0 }, { x: 61, y: 0 }]}});
+window.coin = new Mote();
 
 export default Mote;

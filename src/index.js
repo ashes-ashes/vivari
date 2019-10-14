@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
     fetchWindowProps(canvas);
 
     terrarium.start();
-    terrarium.terrarium.addPhysicsObject(coin);
+    terrarium.terrarium.addMote();
 
     setTimeout(() => {
         let p = document.getElementById('instructions1');

@@ -6,6 +6,14 @@ import Util from '../utils';
 class Terrarium {
     constructor() {
         this.physicsObjects = [];
+        
+        this.entities = {
+            plants: [],
+            critters: [],
+            eggs: [],
+            fruit: [],
+        }
+
         this.heldObj = null;
 
         this.addPhysicsObject = this.addPhysicsObject.bind(this);
@@ -53,8 +61,16 @@ class Terrarium {
         }
     }
 
+    addObject(Class, entityType) {
+        let obj = new Class();
+        this.physicsObjects.push(obj);
+        this.entities[entityType].push(obj);
+    }
+
     addMote() {
-        this.addPhysicsObject(new Mote({ size: { x: 30, y: 30 }, isAnimated: false, ageFrames: { 0: [{ x: 0, y: 0 }, { x: 31, y: 0 }, { x: 61, y: 0 }] } }));
+        let mote = new Mote();
+        this.physicsObjects.push(mote);
+        this.entities.critters.push(mote);
     }
 
 }
