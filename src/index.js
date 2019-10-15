@@ -5,9 +5,7 @@ import './styles/reset.css';
 import './styles/main.css';
 
 const fetchWindowProps = (canvas) => {
-    console.log(canvas);
     let props = canvas.getBoundingClientRect();
-    console.log(props);
     properties.window.offset.x = props.x;
     properties.window.offset.y = props.y;
     properties.window.height = props.height;
@@ -24,6 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     terrarium.start();
     terrarium.terrarium.addMote();
+    terrarium.terrarium.addMoteEgg();
 
     setTimeout(() => {
         let p = document.getElementById('instructions1');
@@ -34,22 +33,31 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         let p = document.getElementById('instructions2');
         p.classList.add('vis');
-    }, 5000)
+    }, 3000)
 
     setTimeout(() => {
         let links = document.getElementById('hireme');
         links.classList.add('vis');
-    }, 9000)
+    }, 5000)
 
     setTimeout(() => {
         let instructions = document.getElementsByClassName('instruction');
         Array.from(instructions).forEach((el) => {
             el.classList.remove('vis');
-        }, 20000)
+        }, 5000)
     })
 
     document.getElementById("???").addEventListener('click', () => {
         terrarium.terrarium.addMote();
+    })
+
+    document.getElementById("debugbutton").addEventListener('click', () => {
+        properties.dev.debug = true;
+        let box = document.getElementById("instructionsbox");
+        box.classList.add('debug');
+        setInterval(() => {
+            box.innerText = JSON.stringify(properties.dev.focus, null, 2);
+        }, 20);
     })
 
     window.addEventListener('resize', () => {

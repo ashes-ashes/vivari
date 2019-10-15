@@ -7,6 +7,8 @@ class Plant extends Life {
     constructor(options) {
         super(options);
         this.pos.y = properties.terrarium.groundHeight;
+
+        this.entityType = 'plant';
     }
 
 

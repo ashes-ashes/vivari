@@ -3,9 +3,14 @@ import PhysicsObject from '../physics_object';
 class Life extends PhysicsObject {
     constructor(options) {
         super(options);
-        this.isMature = false;
-        this.ageFrames = options.ageFrames || {}
+        this.ageFrames = options.ageFrames || { 0: [{ x: 0, y: 0 }] };
         this.matureAge = options.matureAge;
+
+        this.frames = this.ageFrames[0];
+
+        this.stage = 0;
+        this.lifeSpan = null;
+        this.isMature = false;
 
     }
 
@@ -15,8 +20,9 @@ class Life extends PhysicsObject {
     }
 
     grow() {
-        if (Object.keys(this.ageFrames).includes(this.age)) {
+        if (Object.keys(this.ageFrames).includes(this.age.toString())) {
             this.frames = this.ageFrames[this.age];
+            this.stage++;
         }
     }
 

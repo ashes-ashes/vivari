@@ -1,6 +1,10 @@
 
 
 const properties = {
+    dev: {
+        debug: false,
+        focus: null,
+    },
     window: {
         offset: {
             x: 0,

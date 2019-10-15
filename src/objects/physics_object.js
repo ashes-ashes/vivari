@@ -104,6 +104,9 @@ class PhysicsObject {
     }
 
     startDrag() {
+        if (properties.dev.debug) {
+            properties.dev.focus = this;
+        }
         this.held = true;
         this.prevPos = this.pos;
     }

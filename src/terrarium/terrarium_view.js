@@ -36,7 +36,6 @@ class TerrariumView {
         })
         this.canvas.addEventListener('mousedown', (e) => {
             this.getMousePos(e);
-            console.log(`Clicked at ${this.mousePos.x}, ${this.mousePos.y}`);
             this.terrarium.handleMouseDown(this.mousePos);
             this.mouseDown = true;
         })

@@ -103,6 +103,18 @@ article p.vis {
     opacity: 1;
 }
 
+@media only screen and (min-width: 1200px) {
+    #instructionsbox.debug {
+        width: 400px;
+        height: 500px;
+        font-size: 10px;
+        text-align: left;
+        overflow: scroll;
+        margin-left: 10px;
+        columns: 50% 2;
+    }
+}
+
 @media only screen and (max-width: 1200px) {
 
   main {
@@ -123,6 +135,7 @@ article p.vis {
       width: 800px;
       margin-top: 20px;
   }
+
 }
 
 @media only screen and (max-width: 800px) {
