@@ -5,9 +5,18 @@ import properties from '../../../properties';
 class Critter extends Life {
     constructor(options) {
         super(options);
+
+        this.entityType = 'critter';
         
         this.hunger = 0;
-        
+        this.metabolism = 10;
+    }
+
+    move() {
+        super.move();
+        if (this.age%this.metabolism === 0) {
+            this.hunger++;
+        }
     }
 
     hop() {
