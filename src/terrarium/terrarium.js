@@ -51,7 +51,7 @@ class Terrarium {
     handleMouseDown(mousePos) {
 
         let target = this.physicsObjects.find((obj) => 
-            obj.doesContainPoint(mousePos)
+            obj.doesContainPoint(mousePos) && obj.draggable === true
         );
 
         if (target) {

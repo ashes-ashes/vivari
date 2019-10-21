@@ -16,6 +16,8 @@ class Plant extends Life {
         this.fruitTime = options.fruitTime || 10000;
         this.fruitCountdown = 0;
         this.fruitPos = options.fruitPos || {x: 0, y: 0}
+
+        this.draggable = false;
     }
 
 

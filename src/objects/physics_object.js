@@ -24,6 +24,7 @@ class PhysicsObject {
 
         this.held = false;
         this.onGround = false;
+        this.draggable = true;
 
         this.advanceFrame = () => {
             this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
