@@ -4,6 +4,9 @@ import TerrariumView from './terrarium/terrarium_view';
 import './styles/reset.css';
 import './styles/main.css';
 
+// testing on window //
+import Etomat from './objects/life/plant/etomat/etomat';
+
 const fetchWindowProps = (canvas) => {
     let props = canvas.getBoundingClientRect();
     properties.window.offset.x = props.x;
@@ -21,8 +24,8 @@ window.addEventListener('DOMContentLoaded', () => {
     fetchWindowProps(canvas);
 
     terrarium.start();
-    terrarium.terrarium.addMote();
     terrarium.terrarium.addMoteEgg();
+    terrarium.terrarium.spawnObject(Etomat, 'plants');
 
     setTimeout(() => {
         let p = document.getElementById('instructions1');

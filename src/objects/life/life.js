@@ -10,7 +10,6 @@ class Life extends PhysicsObject {
 
         this.stage = 0;
         this.lifeSpan = null;
-        this.isMature = false;
 
     }
 
@@ -24,6 +23,10 @@ class Life extends PhysicsObject {
             this.frames = this.ageFrames[this.age];
             this.stage++;
         }
+    }
+
+    isMature() {
+        return this.matureAge <= this.age;
     }
 
 }

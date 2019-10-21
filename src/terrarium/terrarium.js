@@ -1,9 +1,10 @@
 import PhysicsObject from '../objects/physics_object';
-import Mote from '../objects/life/critter/mote/mote';
-import MoteEgg from '../objects/life/critter/mote/mote_egg';
+
 import Util from '../utils';
 import properties from '../properties';
 
+import Mote from '../objects/life/critter/mote/mote';
+import MoteEgg from '../objects/life/critter/mote/mote_egg';
 
 class Terrarium {
     constructor() {
@@ -35,6 +36,7 @@ class Terrarium {
             obj.move();
         });
         this.handleEggs();
+        this.handleFruiting();
     }
 
     addPhysicsObject(obj) {
@@ -103,6 +105,30 @@ class Terrarium {
                 this.removePhysicsObject(egg);
             }
         })
+    }
+
+    handleFruiting() {
+        this.entities.plants.forEach((plant) => {
+            if (plant.age >= plant.matureAge) {
+                if (plant.fruitCountdown <= 0) {
+                    this.spawnFruit(plant);
+                } else if (plant.hasFruit === false) {
+                    plant.fruitCountdown--;
+                }
+            }
+        })
+    }
+
+    spawnFruit(plant) {
+        if (plant.isMature() && plant.hasFruit === false) {
+            let fruit = new plant.Fruit({
+                pos: { x: plant.pos.x + plant.fruitPos.x, y: plant.pos.y + plant.fruitPos.y },
+                parent: plant
+            });
+            this.addObject(fruit, 'fruit');
+            plant.hasFruit = true;
+            plant.fruitCountdown = plant.fruitTime;
+        }
     }
 
 

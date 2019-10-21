@@ -5,9 +5,9 @@ class Fruit extends Life {
     
     constructor(options) {
         super(options);
-        
+
+        this.parent = options.parent || null;
         this.picked = false;
-        this.ripe = false;
     }
 
     move() {
