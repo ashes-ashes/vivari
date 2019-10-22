@@ -121,9 +121,9 @@ class Terrarium {
 
     spawnFruit(plant) {
         if (plant.isMature() && plant.hasFruit === false) {
-            let fruit = new plant.Fruit({
+            let fruit = new plant.FruitClass({
                 pos: { x: plant.pos.x + plant.fruitPos.x, y: plant.pos.y + plant.fruitPos.y },
-                parent: plant
+                parentPlant: plant
             });
             this.addObject(fruit, 'fruit');
             plant.hasFruit = true;

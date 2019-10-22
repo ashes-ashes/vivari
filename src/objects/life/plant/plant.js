@@ -11,13 +11,15 @@ class Plant extends Life {
 
         this.entityType = 'plant';
 
-        this.Fruit = options.fruit || Fruit;
+        this.FruitClass = options.FruitClass || Fruit;
         this.hasFruit = false;
         this.fruitTime = options.fruitTime || 10000;
         this.fruitCountdown = 0;
         this.fruitPos = options.fruitPos || {x: 0, y: 0}
 
         this.draggable = false;
+
+        this.defruit = this.defruit.bind(this);
     }
 
 
@@ -30,14 +32,18 @@ class Plant extends Life {
         super.grow();
     }
 
-    startDrag() {
+    defruit() {
+        this.hasFruit = false;
     }
 
-    beDragged() {
-    }
+    // startDrag() {
+    // }
 
-    endDrag() {
-    }
+    // beDragged() {
+    // }
+
+    // endDrag() {
+    // }
 
     
 }

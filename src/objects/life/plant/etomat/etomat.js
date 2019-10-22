@@ -16,8 +16,9 @@ class Etomat extends Plant {
             sprite: sprite,
             size: { x: 30, y: 40 },
             isAnimated: false,
-            fruit: EtomatFruit,
+            FruitClass: EtomatFruit,
             fruitPos: {x: 0, y: 13},
+            fruitTime: 100,
             ageFrames: Util.constructAgeFrames(30, 40, 1, 10, 100),
             matureAge: 900
         }, options)

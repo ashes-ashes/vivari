@@ -6,7 +6,7 @@ class Fruit extends Life {
     constructor(options) {
         super(options);
 
-        this.parent = options.parent || null;
+        this.parentPlant = options.parentPlant || null;
         this.picked = false;
     }
 
@@ -18,6 +18,7 @@ class Fruit extends Life {
 
     startDrag() {
         this.picked = true;
+        this.parentPlant.defruit();
         super.startDrag();
     }
 
