@@ -9,7 +9,8 @@ class Critter extends Life {
         this.entityType = 'critter';
         
         this.hunger = 0;
-        this.metabolism = 10;
+        this.metabolism = 100;
+        this.targetPos = null;
     }
 
     move() {
@@ -19,9 +20,24 @@ class Critter extends Life {
         }
     }
 
-    hop() {
-        this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
-        this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
+    hop(hopPos) {
+        if (hopPos === undefined) {
+            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
+            this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
+        } else {
+            this.vel.x += (hopPos.x - this.pos.x) + properties.physics.groundFriction;
+            this.vel.y = properties.physics.gravity.y;
+        }
+    }
+
+    scoot(scootPos) {
+        if (scootPos === undefined) {
+            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
+            this.vel.y = properties.physics.gravity.y;
+        } else {
+            this.vel.x += (scootPos.x - this.pos.x) + properties.physics.groundFriction;
+            this.vel.y = properties.physics.gravity.y;
+        }
     }
 
 

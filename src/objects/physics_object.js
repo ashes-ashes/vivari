@@ -56,7 +56,7 @@ class PhysicsObject {
         if (!this.held) {
             this.applyFriction();
             this.deflect();
-            this.pos = Util.addVectors(this.pos, this.vel);
+            this.updatePos(Util.addVectors(this.pos, this.vel));
             this.applyGravity();
         }
 
@@ -92,6 +92,14 @@ class PhysicsObject {
             this.vel.x = -(this.vel.x/properties.physics.impact);
             this.pos.x <= 0 ? this.pos.x = 0 : this.pos.x = properties.terrarium.width - this.size.x
         } 
+    }
+
+    updatePos(newPos) {
+        this.pos = Object.assign({}, this.pos, newPos);
+    }
+
+    updateVel(newVel) {
+        this.vel = Object.assign({}, this.vel, newVel);
     }
 
     accelerate(vector) {
