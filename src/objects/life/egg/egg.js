@@ -19,7 +19,7 @@ class Egg extends Life {
     
         // this.stages = options.stages;
         this.EggType = options.EggType;
-        this.entityType = options.EggType.entityType;
+        this.entityType = options.entityType || 'critters';
     }
 
     // move() {
@@ -27,9 +27,10 @@ class Egg extends Life {
     // }
 
     hatch() {
-        return new this.EggType({
+        let entity = new this.EggType({
             pos: this.pos
         })
+        return entity;
     }
 
     isHatchable() {

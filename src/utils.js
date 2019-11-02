@@ -23,7 +23,23 @@ const Util = {
     },
     randInRange: (min, max) => {
         return Math.random() * (max - min) + min;
-    }
+    },
+    constructFrames: (width, height, numFrames) => {
+        let frames = [];
+        for (let i = 0; i < numFrames; i++) {
+            frames.push({x: i*width, y: height})
+        };
+        return frames;
+    },
+    constructAgeFrames: (width, height, numFrames, numAges, ageSpacing) => {
+        let ageFrames = {};
+        let currentHeight = 0;
+        for (let i = 0; i < numAges; i++) {
+            ageFrames[i*ageSpacing] = Util.constructFrames(width, currentHeight, numFrames);
+            currentHeight += height;
+        };
+        return ageFrames;
+    },
 };
 
 export default Util;

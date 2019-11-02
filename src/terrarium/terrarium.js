@@ -1,9 +1,10 @@
 import PhysicsObject from '../objects/physics_object';
-import Mote from '../objects/life/critter/mote/mote';
-import MoteEgg from '../objects/life/critter/mote/mote_egg';
+
 import Util from '../utils';
 import properties from '../properties';
 
+import Mote from '../objects/life/critter/mote/mote';
+import MoteEgg from '../objects/life/critter/mote/mote_egg';
 
 class Terrarium {
     constructor() {
@@ -13,7 +14,7 @@ class Terrarium {
             plants: [],
             critters: [],
             eggs: [],
-            fruit: [],
+            fruits: [],
         }
 
         this.heldObj = null;
@@ -32,9 +33,17 @@ class Terrarium {
 
     move() {
         this.physicsObjects.forEach((obj) => {
+            if (obj.isGarbage) {
+                this.removePhysicsObject(obj);
+            }
             obj.move();
         });
+        this.physicsObjects.sort((a, b) => {
+            return a.pos.x - b.pos.x;
+        })
         this.handleEggs();
+        this.handleFruiting();
+        this.handleCritters();
     }
 
     addPhysicsObject(obj) {
@@ -49,7 +58,7 @@ class Terrarium {
     handleMouseDown(mousePos) {
 
         let target = this.physicsObjects.find((obj) => 
-            obj.doesContainPoint(mousePos)
+            obj.doesContainPoint(mousePos) && obj.draggable === true
         );
 
         if (target) {
@@ -98,11 +107,51 @@ class Terrarium {
     handleEggs() {
         this.entities.eggs.forEach((egg, idx) => {
             if (egg.isHatchable()) {
+                console.log(egg);
                 this.addObject(egg.hatch(), egg.entityType);
                 this.entities.eggs.splice(idx, 1);
                 this.removePhysicsObject(egg);
             }
         })
+    }
+
+    handleFruiting() {
+        this.entities.plants.forEach((plant) => {
+            if (plant.age >= plant.matureAge) {
+                if (plant.fruitCountdown <= 0) {
+                    this.spawnFruit(plant);
+                } else if (plant.hasFruit === false) {
+                    plant.fruitCountdown--;
+                }
+            }
+        })
+    }
+
+    handleCritters() {
+        this.entities.critters.forEach((critter) => {
+            this.handleFocus(critter)
+        })
+    }
+
+    handleFocus(critter) {
+        if (critter.isHungry() && !critter.isFocused()) {
+            if (this.entities.fruits.length > 0) {
+                let closestFruit = this.entities.fruits.reduce((a, b) => {
+                    return Math.abs(a.pos.x - critter.pos.x) < Math.abs(b.pos.x - critter.pos.x) ? a : b
+                })
+                critter.setFocus(closestFruit);
+            }
+        } else if (!critter.isHungry() && critter.isFocused()) {
+            critter.setFocus(null);
+        }
+    }
+
+
+    spawnFruit(plant) {
+        if (plant.isMature() && plant.hasFruit === false) {
+            this.addObject(plant.bearFruit(), 'fruits');
+            console.log(this);
+        }
     }
 
 

@@ -6,22 +6,71 @@ class Critter extends Life {
     constructor(options) {
         super(options);
 
-        this.entityType = 'critter';
+        this.entityType = 'critters';
         
         this.hunger = 0;
-        this.metabolism = 10;
+        this.hungerThreshold = options.hungerThreshold || 25;
+        this.metabolism = 100;
+        this.focus = null;
     }
 
     move() {
         super.move();
+        if (this.isFocused()) {
+            this.eatFocus();
+        }
         if (this.age%this.metabolism === 0) {
             this.hunger++;
         }
     }
 
-    hop() {
-        this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
-        this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
+    isHungry() {
+        if (this.hunger > this.hungerThreshold) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    setFocus(obj) {
+        this.focus = obj;
+    }
+
+    isFocused() {
+        return (this.focus !== null)
+    }
+
+    hop(hopPos) {
+        if (hopPos === undefined) {
+            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
+            this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
+        } else {
+            let hopDir = (hopPos.x - this.pos.x) > 0 ? 1 : -1
+            this.vel.x += ((hopPos.x - this.pos.x) / 10) + hopDir*10;
+            this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
+        }
+    }
+
+    scoot(scootPos) {
+        if (scootPos === undefined) {
+            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
+            this.vel.y = properties.physics.gravity.y;
+        } else {
+            this.vel.x += (scootPos.x - this.pos.x);
+            this.vel.y = properties.physics.gravity.y;
+        }
+    }
+
+    eat(food) {
+        this.hunger -= food.heartiness;
+        this.focus = null;
+        food.flagAsGarbage();
+    }
+
+    eatFocus() {
+        if (this.doesIntersect(this.focus)) {
+            this.eat(this.focus);
+        }
     }
 
 

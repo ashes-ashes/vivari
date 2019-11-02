@@ -25,8 +25,6 @@ class MoteEgg extends Egg {
 
         super(newOptions);
 
-
-        console.log('hi');
     }
 
 }

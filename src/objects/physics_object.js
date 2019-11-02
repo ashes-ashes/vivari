@@ -24,6 +24,9 @@ class PhysicsObject {
 
         this.held = false;
         this.onGround = false;
+        this.draggable = true;
+
+        this.isGarbage = false;
 
         this.advanceFrame = () => {
             this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
@@ -55,7 +58,7 @@ class PhysicsObject {
         if (!this.held) {
             this.applyFriction();
             this.deflect();
-            this.pos = Util.addVectors(this.pos, this.vel);
+            this.updatePos(Util.addVectors(this.pos, this.vel));
             this.applyGravity();
         }
 
@@ -93,6 +96,14 @@ class PhysicsObject {
         } 
     }
 
+    updatePos(newPos) {
+        this.pos = Object.assign({}, this.pos, newPos);
+    }
+
+    updateVel(newVel) {
+        this.vel = Object.assign({}, this.vel, newVel);
+    }
+
     accelerate(vector) {
         this.vel = Util.addVectors(this.vel, vector)
     }
@@ -115,6 +126,10 @@ class PhysicsObject {
         this.held = false;
     }
 
+    center() {
+        return {x: this.pos.x + (this.size.x/2), y: this.pos.y + (this.size.y/2)}
+    }
+
     doesContainPoint(point) {
         let top = this.pos.y;
         let bottom = this.pos.y + this.size.y;
@@ -128,6 +143,15 @@ class PhysicsObject {
         } else {
             return false
         }
+    }
+
+    doesIntersect(obj) {
+        return (this.doesContainPoint(obj.center()) || obj.doesContainPoint(this.center()));
+    }
+
+    flagAsGarbage() {
+        console.log(this);
+        this.isGarbage = true;
     }
 
     // advanceFrame() {
