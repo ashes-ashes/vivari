@@ -26,6 +26,8 @@ class PhysicsObject {
         this.onGround = false;
         this.draggable = true;
 
+        this.isGarbage = false;
+
         this.advanceFrame = () => {
             this.frame < this.frames.length - 1 ? this.frame++ : this.frame = 0;
         }
@@ -124,6 +126,10 @@ class PhysicsObject {
         this.held = false;
     }
 
+    center() {
+        return {x: this.pos.x + (this.size.x/2), y: this.pos.y + (this.size.y/2)}
+    }
+
     doesContainPoint(point) {
         let top = this.pos.y;
         let bottom = this.pos.y + this.size.y;
@@ -137,6 +143,14 @@ class PhysicsObject {
         } else {
             return false
         }
+    }
+
+    doesIntersect(obj) {
+        return (this.doesContainPoint(obj.center()) || obj.doesContainPoint(this.center()));
+    }
+
+    flagAsGarbage() {
+        this.isGarbage = true;
     }
 
     // advanceFrame() {

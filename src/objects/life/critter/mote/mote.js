@@ -28,6 +28,14 @@ class Mote extends Critter {
     move() {
         super.move();
         if (Math.random() < 0.01) {
+            this.takeAction();
+        };
+    }
+
+    takeAction() {
+        if (this.focus !== null) {
+            this.hop(this.focus.pos);
+        } else {
             this.hop();
         }
     }

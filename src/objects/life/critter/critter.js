@@ -9,15 +9,35 @@ class Critter extends Life {
         this.entityType = 'critter';
         
         this.hunger = 0;
+        this.hungerThreshold = options.hungerThreshold || 25;
         this.metabolism = 100;
-        this.targetPos = null;
+        this.focus = null;
     }
 
     move() {
         super.move();
+        if (this.isFocused()) {
+            this.eatFocus();
+        }
         if (this.age%this.metabolism === 0) {
             this.hunger++;
         }
+    }
+
+    isHungry() {
+        if (this.hunger > this.hungerThreshold) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    setFocus(obj) {
+        this.focus = obj;
+    }
+
+    isFocused() {
+        return (this.focus !== null)
     }
 
     hop(hopPos) {
@@ -25,8 +45,9 @@ class Critter extends Life {
             this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
             this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
         } else {
-            this.vel.x += (hopPos.x - this.pos.x) + properties.physics.groundFriction;
-            this.vel.y = properties.physics.gravity.y;
+            let hopDir = (hopPos.x - this.pos.x) > 0 ? 1 : -1
+            this.vel.x += ((hopPos.x - this.pos.x) / 10) + hopDir*10;
+            this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
         }
     }
 
@@ -35,8 +56,19 @@ class Critter extends Life {
             this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
             this.vel.y = properties.physics.gravity.y;
         } else {
-            this.vel.x += (scootPos.x - this.pos.x) + properties.physics.groundFriction;
+            this.vel.x += (scootPos.x - this.pos.x);
             this.vel.y = properties.physics.gravity.y;
+        }
+    }
+
+    eat(food) {
+        this.hunger -= food.heartiness;
+        food.flagAsGarbage();
+    }
+
+    eatFocus() {
+        if (this.doesIntersect(this.focus)) {
+            this.eat(this.focus);
         }
     }
 
