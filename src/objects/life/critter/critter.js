@@ -63,6 +63,7 @@ class Critter extends Life {
 
     eat(food) {
         this.hunger -= food.heartiness;
+        this.focus = null;
         food.flagAsGarbage();
     }
 
