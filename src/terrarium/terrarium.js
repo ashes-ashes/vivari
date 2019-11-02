@@ -14,7 +14,7 @@ class Terrarium {
             plants: [],
             critters: [],
             eggs: [],
-            fruit: [],
+            fruits: [],
         }
 
         this.heldObj = null;
@@ -33,7 +33,7 @@ class Terrarium {
 
     move() {
         this.physicsObjects.forEach((obj) => {
-            if (obj.isTrash) {
+            if (obj.isGarbage) {
                 this.removePhysicsObject(obj);
             }
             obj.move();
@@ -107,6 +107,7 @@ class Terrarium {
     handleEggs() {
         this.entities.eggs.forEach((egg, idx) => {
             if (egg.isHatchable()) {
+                console.log(egg);
                 this.addObject(egg.hatch(), egg.entityType);
                 this.entities.eggs.splice(idx, 1);
                 this.removePhysicsObject(egg);
@@ -134,8 +135,8 @@ class Terrarium {
 
     handleFocus(critter) {
         if (critter.isHungry() && !critter.isFocused()) {
-            if (this.entities.fruit.length > 0) {
-                let closestFruit = this.entities.fruit.reduce((a, b) => {
+            if (this.entities.fruits.length > 0) {
+                let closestFruit = this.entities.fruits.reduce((a, b) => {
                     return Math.abs(a.pos.x - critter.pos.x) < Math.abs(b.pos.x - critter.pos.x) ? a : b
                 })
                 critter.setFocus(closestFruit);
@@ -145,19 +146,10 @@ class Terrarium {
         }
     }
 
-    handleEat() {
-        
-    }
 
     spawnFruit(plant) {
         if (plant.isMature() && plant.hasFruit === false) {
-            let fruit = new plant.FruitClass({
-                pos: { x: plant.pos.x + plant.fruitPos.x, y: plant.pos.y + plant.fruitPos.y },
-                parentPlant: plant
-            });
-            this.addObject(fruit, 'fruit');
-            plant.hasFruit = true;
-            plant.fruitCountdown = plant.fruitTime;
+            this.addObject(plant.bearFruit(), 'fruits');
             console.log(this);
         }
     }

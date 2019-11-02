@@ -150,6 +150,7 @@ class PhysicsObject {
     }
 
     flagAsGarbage() {
+        console.log(this);
         this.isGarbage = true;
     }
 

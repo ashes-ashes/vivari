@@ -36,6 +36,18 @@ class Plant extends Life {
         this.hasFruit = false;
     }
 
+    bearFruit() {
+        if (this.isMature() && this.hasFruit === false) {
+            let fruit = new this.FruitClass({
+                pos: { x: this.pos.x + this.fruitPos.x, y: this.pos.y + this.fruitPos.y },
+                parentPlant: this 
+            });
+            this.hasFruit = true;
+            this.fruitCountdown = this.fruitTime;
+            return fruit;
+        }
+    }
+
     // startDrag() {
     // }
 

@@ -6,7 +6,7 @@ class Critter extends Life {
     constructor(options) {
         super(options);
 
-        this.entityType = 'critter';
+        this.entityType = 'critters';
         
         this.hunger = 0;
         this.hungerThreshold = options.hungerThreshold || 25;
