@@ -5,7 +5,7 @@ import './styles/reset.css';
 import './styles/main.css';
 
 // testing on window //
-import Etomat from './objects/life/plant/etomat/etomat';
+import EtomatSeed from './objects/life/plant/etomat/etomat_seed';
 
 const fetchWindowProps = (canvas) => {
     let props = canvas.getBoundingClientRect();
@@ -24,8 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
     fetchWindowProps(canvas);
 
     terrarium.start();
-    terrarium.terrarium.addMoteEgg();
-    terrarium.terrarium.spawnObject(Etomat, 'plants');
 
     // setTimeout(() => {
     //     let p = document.getElementById('instructions1');
@@ -61,6 +59,14 @@ window.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             box.innerText = JSON.stringify(properties.dev.focus, null, 2);
         }, 20);
+    })
+    
+        document.getElementById("motebutton").addEventListener('click', () => {
+            terrarium.terrarium.addMoteEgg();
+        })
+
+    document.getElementById("etomatbutton").addEventListener('click', () => {
+        terrarium.terrarium.spawnObject(EtomatSeed, 'eggs');
     })
 
     window.addEventListener('resize', () => {
