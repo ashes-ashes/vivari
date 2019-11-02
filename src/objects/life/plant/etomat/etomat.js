@@ -18,7 +18,7 @@ class Etomat extends Plant {
             isAnimated: false,
             FruitClass: EtomatFruit,
             fruitPos: {x: 0, y: 13},
-            fruitTime: 100,
+            fruitTime: 500,
             ageFrames: Util.constructAgeFrames(30, 40, 1, 10, 100),
             matureAge: 900
         }, options)

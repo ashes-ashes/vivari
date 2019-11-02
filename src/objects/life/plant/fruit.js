@@ -23,6 +23,11 @@ class Fruit extends Life {
         super.startDrag();
     }
 
+    flagAsGarbage() {
+        this.parentPlant.defruit();
+        super.flagAsGarbage();
+    }
+
 }
 
 export default Fruit;

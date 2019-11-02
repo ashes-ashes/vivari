@@ -5,7 +5,7 @@ import './styles/reset.css';
 import './styles/main.css';
 
 // testing on window //
-import Etomat from './objects/life/plant/etomat/etomat';
+import EtomatSeed from './objects/life/plant/etomat/etomat_seed';
 
 const fetchWindowProps = (canvas) => {
     let props = canvas.getBoundingClientRect();
@@ -24,31 +24,29 @@ window.addEventListener('DOMContentLoaded', () => {
     fetchWindowProps(canvas);
 
     terrarium.start();
-    terrarium.terrarium.addMoteEgg();
-    terrarium.terrarium.spawnObject(Etomat, 'plants');
 
-    setTimeout(() => {
-        let p = document.getElementById('instructions1');
-        p.classList.add('vis');
+    // setTimeout(() => {
+    //     let p = document.getElementById('instructions1');
+    //     p.classList.add('vis');
 
-    }, 1000)
+    // }, 1000)
 
-    setTimeout(() => {
-        let p = document.getElementById('instructions2');
-        p.classList.add('vis');
-    }, 3000)
+    // setTimeout(() => {
+    //     let p = document.getElementById('instructions2');
+    //     p.classList.add('vis');
+    // }, 3000)
 
     setTimeout(() => {
         let links = document.getElementById('hireme');
         links.classList.add('vis');
     }, 5000)
 
-    setTimeout(() => {
-        let instructions = document.getElementsByClassName('instruction');
-        Array.from(instructions).forEach((el) => {
-            el.classList.remove('vis');
-        }, 5000)
-    })
+    // setTimeout(() => {
+    //     let instructions = document.getElementsByClassName('instruction');
+    //     Array.from(instructions).forEach((el) => {
+    //         el.classList.remove('vis');
+    //     }, 5000)
+    // })
 
     document.getElementById("???").addEventListener('click', () => {
         terrarium.terrarium.addMote();
@@ -61,6 +59,14 @@ window.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             box.innerText = JSON.stringify(properties.dev.focus, null, 2);
         }, 20);
+    })
+    
+        document.getElementById("motebutton").addEventListener('click', () => {
+            terrarium.terrarium.addMoteEgg();
+        })
+
+    document.getElementById("etomatbutton").addEventListener('click', () => {
+        terrarium.terrarium.spawnObject(EtomatSeed, 'eggs');
     })
 
     window.addEventListener('resize', () => {

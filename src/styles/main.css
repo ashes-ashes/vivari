@@ -103,6 +103,32 @@ article p.vis {
     opacity: 1;
 }
 
+.addbutton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+    text-shadow: none;
+    transition-property: text-shadow, color;
+    transition-duration: 0.3s
+}
+
+.addbutton img {
+    margin: 10px;
+}
+
+.addbutton:hover {
+    text-shadow: 0px 0px 5px palegoldenrod;
+    color: palegoldenrod
+}
+
+.addbutton:active {
+    text-shadow: 0px 0px 10px white;
+    color: white;
+}
+
+
 @media only screen and (min-width: 1200px) {
     #instructionsbox.debug {
         width: 400px;
