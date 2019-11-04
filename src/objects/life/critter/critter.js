@@ -17,7 +17,11 @@ class Critter extends Life {
     move() {
         super.move();
         if (this.isFocused()) {
+            if (this.focus.isGarbage) {
+                this.focus = null;
+            } else {
             this.eatFocus();
+            }
         }
         if (this.age%this.metabolism === 0) {
             this.hunger++;
