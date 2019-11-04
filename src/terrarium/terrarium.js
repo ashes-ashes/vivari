@@ -107,7 +107,6 @@ class Terrarium {
     handleEggs() {
         this.entities.eggs.forEach((egg, idx) => {
             if (egg.isHatchable()) {
-                console.log(egg);
                 this.addObject(egg.hatch(), egg.entityType);
                 this.entities.eggs.splice(idx, 1);
                 this.removePhysicsObject(egg);
@@ -150,7 +149,6 @@ class Terrarium {
     spawnFruit(plant) {
         if (plant.isMature() && plant.hasFruit === false) {
             this.addObject(plant.bearFruit(), 'fruits');
-            console.log(this);
         }
     }
 
