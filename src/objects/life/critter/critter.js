@@ -56,7 +56,7 @@ class Critter extends Life {
             this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
             this.vel.y = properties.physics.gravity.y;
         } else {
-            let scootnDir = (scootPos.x - this.pos.x) > 0 ? 1 : -1
+            let scootDir = (scootPos.x - this.pos.x) > 0 ? 1 : -1
             this.vel.x += ((scootPos.x - this.pos.x) / 15) + scootDir * 5;
             this.vel.y = properties.physics.gravity.y;
         }
