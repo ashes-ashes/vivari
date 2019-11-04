@@ -83,8 +83,7 @@ footer ul.vis {
 }
 
 article {
-    color: palegoldenrod;
-    text-shadow: 0px 0px 10px rgba(255,254,232, 0.8);
+    color: dimgray;
     font-size: 20px;
     text-align: center;
     display: flex;
@@ -109,13 +108,37 @@ article p.vis {
     align-items: center;
     justify-content: left;
 
+    height: 40px;
+    /* width: 200px; */
+    margin: 10px;
+
     text-shadow: none;
     transition-property: text-shadow, color;
     transition-duration: 0.3s
 }
 
-.addbutton img {
-    margin: 10px;
+.addbutton .imgbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40px;
+    width: 40px;
+    border: 1px solid dimgray;
+    border-radius: 20px;
+
+    margin-right: 10px;
+
+    transition-property: border-color;
+    transition-duration: .3s;
+}
+
+.addbutton:hover .imgbox {
+    border-color: palegoldenrod;
+}
+
+.addbutton:active .imgbox {
+    border-color: white;
 }
 
 .addbutton:hover {
@@ -128,6 +151,9 @@ article p.vis {
     color: white;
 }
 
+h3 {
+    font-size: 22px;
+}
 
 @media only screen and (min-width: 1200px) {
     #instructionsbox.debug {
