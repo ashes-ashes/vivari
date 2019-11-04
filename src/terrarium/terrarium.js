@@ -149,7 +149,6 @@ class Terrarium {
     spawnFruit(plant) {
         if (plant.isMature() && plant.hasFruit === false) {
             this.addObject(plant.bearFruit(), 'fruits');
-            console.log(this);
         }
     }
 
