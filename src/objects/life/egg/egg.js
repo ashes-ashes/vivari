@@ -34,7 +34,7 @@ class Egg extends Life {
     }
 
     isHatchable() {
-        return (this.onGround && this.matureAge <= this.age);
+        return (this.onGround() && this.matureAge <= this.age);
     }
 
 }

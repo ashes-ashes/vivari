@@ -23,7 +23,6 @@ class PhysicsObject {
         this.frameLength = options.frameLength || properties.window.frameLength;
 
         this.held = false;
-        this.onGround = false;
         this.draggable = true;
 
         this.isGarbage = false;
@@ -67,18 +66,17 @@ class PhysicsObject {
 
     applyGravity() {
         if ((this.pos.y + this.size.y) < properties.terrarium.groundHeight) {
-            this.onGround = false;
             this.vel = Util.addVectors(this.vel, properties.physics.gravity)
         } else if ((this.pos.y + this.size.y) >= properties.terrarium.groundHeight) {
-            this.onGround = true;
             this.pos.y = (properties.terrarium.groundHeight - this.size.y);
             this.vel.y = -(this.vel.y - this.weight);
         }
 
     }
 
+
     applyFriction() {
-        if (this.onGround) {
+        if (this.onGround()) {
             if (this.vel.x < -properties.physics.groundFriction) {
                 this.vel.x += properties.physics.groundFriction;
             } else if (this.vel.x > properties.physics.groundFriction) {
@@ -94,6 +92,10 @@ class PhysicsObject {
             this.vel.x = -(this.vel.x/properties.physics.impact);
             this.pos.x <= 0 ? this.pos.x = 0 : this.pos.x = properties.terrarium.width - this.size.x
         } 
+    }
+
+    onGround() {
+        return (this.pos.y+this.size.y >= 400);
     }
 
     updatePos(newPos) {
