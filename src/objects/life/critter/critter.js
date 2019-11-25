@@ -46,7 +46,7 @@ class Critter extends Life {
 
     hop(hopPos) {
         if (hopPos === undefined) {
-            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
+            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower);
             this.vel.y = (Util.randInRange(2, 4) * this.hopsPower) + properties.physics.gravity.y;
         } else {
             let hopDir = (hopPos.x - this.pos.x) > 0 ? 1 : -1
@@ -57,7 +57,7 @@ class Critter extends Life {
 
     scoot(scootPos) {
         if (scootPos === undefined) {
-            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower) + properties.physics.groundFriction;
+            this.vel.x += (Util.randInRange(-2, 2) * this.hopsPower);
             this.vel.y = properties.physics.gravity.y;
         } else {
             let scootDir = (scootPos.x - this.pos.x) > 0 ? 1 : -1

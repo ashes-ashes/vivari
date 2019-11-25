@@ -9,6 +9,7 @@ class Fruit extends Life {
         this.parentPlant = options.parentPlant || null;
         this.picked = false;
         this.heartiness = options.heartiness || 100;
+        this.weight = options.weight || 40;
     }
 
     move() {
