@@ -17,7 +17,7 @@ class Obberry extends Plant {
             size: { x: 18, y: 42 },
             isAnimated: false,
             FruitClass: ObberryFruit,
-            fruitPos: {x: 8, y: 0},
+            fruitPos: {x: 4, y: 0},
             fruitTime: 500,
             ageFrames: Util.constructAgeFrames(18, 42, 1, 9, 100),
             matureAge: 800,

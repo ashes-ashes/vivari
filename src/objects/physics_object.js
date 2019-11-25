@@ -7,7 +7,7 @@ class PhysicsObject {
 
         this.sprite = options.sprite;
         this.clip = options.clip || {x: 0, y: 0};
-        this.pos = options.pos || {x: (properties.terrarium.width/2), y: 100};
+        this.pos = options.pos || {x: (properties.terrarium.width*Math.random()), y: 100};
         this.vel = {x: 0, y: 0};
         this.size = options.size;
         this.imgsize = options.imgsize || options.size;
