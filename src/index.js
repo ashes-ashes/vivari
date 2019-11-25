@@ -6,6 +6,7 @@ import './styles/main.css';
 
 // testing on window //
 import EtomatSeed from './objects/life/plant/etomat/etomat_seed';
+import ObberrySeed from './objects/life/plant/obberry/obberry_seed';
 import SluggoEgg from './objects/life/critter/sluggo/sluggo_egg';
 
 const fetchWindowProps = (canvas) => {
@@ -72,6 +73,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("sluggobutton").addEventListener('click', () => {
         terrarium.terrarium.spawnObject(SluggoEgg, 'eggs');
+    })
+
+    document.getElementById("obberrybutton").addEventListener('click', () => {
+        terrarium.terrarium.spawnObject(ObberrySeed, 'eggs');
     })
 
     window.addEventListener('resize', () => {
