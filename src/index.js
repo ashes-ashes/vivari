@@ -54,14 +54,14 @@ window.addEventListener('DOMContentLoaded', () => {
         terrarium.terrarium.addMote();
     })
 
-    document.getElementById("debugbutton").addEventListener('click', () => {
-        properties.dev.debug = true;
-        let box = document.getElementById("instructionsbox");
-        box.classList.add('debug');
-        setInterval(() => {
-            box.innerText = JSON.stringify(properties.dev.focus, null, 2);
-        }, 20);
-    })
+    // document.getElementById("debugbutton").addEventListener('click', () => {
+    //     properties.dev.debug = true;
+    //     let box = document.getElementById("instructionsbox");
+    //     box.classList.add('debug');
+    //     setInterval(() => {
+    //         box.innerText = JSON.stringify(properties.dev.focus, null, 2);
+    //     }, 20);
+    // })
     
         document.getElementById("motebutton").addEventListener('click', () => {
             terrarium.terrarium.addMoteEgg();

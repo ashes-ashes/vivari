@@ -155,6 +155,13 @@ h3 {
     font-size: 22px;
 }
 
+.instructions {
+    color: dimgray;
+    text-align: center;
+    margin-top: 20px;
+    width: 100px;
+}
+
 @media only screen and (min-width: 1200px) {
     #instructionsbox.debug {
         width: 400px;
