@@ -135,10 +135,12 @@ article p.vis {
 
 .addbutton:hover .imgbox {
     border-color: palegoldenrod;
+    box-shadow: 0px 0px 10px  rgba(255,254,232, 0.6);
 }
 
 .addbutton:active .imgbox {
     border-color: white;
+    box-shadow: 0px 0px 10px white;
 }
 
 .addbutton:hover {
@@ -147,7 +149,7 @@ article p.vis {
 }
 
 .addbutton:active {
-    text-shadow: 0px 0px 10px white;
+    text-shadow: 0px 0px 5px white;
     color: white;
 }
 
@@ -155,11 +157,18 @@ h3 {
     font-size: 22px;
 }
 
-.instructions {
+ul.instructions {
     color: dimgray;
     text-align: center;
     margin-top: 20px;
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+ul.instructions li {
+    margin: 5px 0px;
+    font-size: 16px;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -180,6 +189,11 @@ h3 {
       flex-direction: column-reverse;
       align-items: center;
       padding-top: 50px;
+  }
+
+  ul.instructions {
+      width: 800px;
+      justify-content: space-around;
   }
 
   article {
@@ -212,6 +226,9 @@ h3 {
       margin: 5px;
   }
 
+  h3 {
+      margin: 10px;
+  }
 
   footer ul {
       width: 600px;
@@ -239,6 +256,16 @@ h3 {
         margin: 10px;
         width: 360px;
         font-size: 12px;
+
+        align-items: center;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 16px;
     }
 
   footer ul {
