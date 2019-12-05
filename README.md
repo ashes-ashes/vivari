@@ -22,17 +22,17 @@
 - Procreate
 
 ## Current Features
-- *Motes.* Hopping points of light.
 - *Physics.* Objects in the terrarium can be picked up and tossed – they'll collide with the walls and floor, bounce, slide, and come to a stop from friction.
+- *Critters.* Motes - hopping points of light - and sluggos, groundbound scooting invertebrates. Both hatch from unique eggs.
+- *Plants.* They're grown from seed, and once mature they produce fruits for creatures to eat.
 
 
 ## Future Features
 ### Gameplay Elements
-- *Growing plants.* Plants are a food source - motes will dim and flicker as they get hungrier.
 - *'Gacha' mechanics.* Deeds for seeds. Complete tasks in your real life and be rewarded in-game.
 - *Growing up.* Well cared-for motes becoming creatures with more complex behavior.
 - *Hazards.* Your little lights are vulnerable to predation.
-- *Saving your progress.* (Once there's something to save.)
+- *Saving your progress.*
 
 ### Internal Improvements.
 - *More complex physics.* Currently, physics are calculated with respect to the ground and walls –
